@@ -2,18 +2,19 @@
 <html lang="en-US">
 <head>
 	<meta charset="UTF-8">
-	<title>Nyan Cat - HTML5+CSS3+JS</title>
+	<title>Nyan Cat</title>
 
 	<link rel="stylesheet" href="css/nyan.css"/>
 </head>
-<body>
+<body onclick="playNyan(); this.onclick=null;">
+
 	<div class="sparks-combo">
 		<div class="spark"></div>
 		<div class="spark"></div>
 		<div class="spark"></div>
 		<div class="spark"></div>
 	</div>
-
+	
 	<div id="wave-a" class="hot rainbow"></div>
 	<div id="wave-a" class="cold rainbow"></div>
 
@@ -21,6 +22,7 @@
 	<div id="wave-b" class="cold rainbow"></div>
 
 	<div id="nyan-cat" class="frame1">
+	<!--
 		<div id="tail"></div>
 
 		<div id="paws"></div>
@@ -32,6 +34,8 @@
 		<div id="head">
 			<div id="face"></div>
 		</div>
+	-->
+		<img src="images/nyan.gif">
 	</div>
 
 	<a href="https://github.com/iskandar1023/nyan-cat" title="My Github Repo" class="repo">
@@ -39,15 +43,22 @@
 		<span>View sources</span>
 	</a>
 
-	<audio autoplay="true" loop="true">
-		<source src="audio/nyan-cat.ogg" type="audio/ogg" />
-		<source src="audio/nyan-cat.mp3" type="audio/mpeg" />
-	</audio>
-
 	<!-- Libs -->
 	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<!-- Nyan Stuff -->
 	<script src="js/nyan.js"></script>
+	
+	<!-- onClick=playNyan script -->
+	<script>
+	function playNyan() {
+		nyan = new Audio('audio/nyan-cat.ogg'); 
+		nyan.addEventListener('ended', function() {
+			this.currentTime = 0;
+			this.play();
+		}, false);
+		nyan.play();
+	}
+	</script>
 </body>
 </html>
